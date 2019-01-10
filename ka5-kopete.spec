@@ -232,25 +232,25 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/oxygen/scalable/actions/voicecall.svgz
 %{_iconsdir}/oxygen/scalable/actions/webcamreceive.svgz
 %{_iconsdir}/oxygen/scalable/actions/webcamsend.svgz
-%{_datadir}/kconf_update/kopete-account-0.10.pl
-%{_datadir}/kconf_update/kopete-account-kconf_update.sh
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-account-0.10.pl
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-account-kconf_update.sh
 %{_datadir}/kconf_update/kopete-account-kconf_update.upd
-%{_datadir}/kconf_update/kopete-gaim_to_pidgin_style.pl
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-gaim_to_pidgin_style.pl
 %{_datadir}/kconf_update/kopete-gaim_to_pidgin_style.upd
-%{_datadir}/kconf_update/kopete-initialstatus.pl
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-initialstatus.pl
 %{_datadir}/kconf_update/kopete-initialstatus.upd
-%{_datadir}/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-jabberpriorityaddition-kconf_update.sh
 %{_datadir}/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
-%{_datadir}/kconf_update/kopete-jabberproxytype-kconf_update.sh
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-jabberproxytype-kconf_update.sh
 %{_datadir}/kconf_update/kopete-jabberproxytype-kconf_update.upd
 %{_datadir}/kconf_update/kopete-nameTracking.upd
-%{_datadir}/kconf_update/kopete-pluginloader.pl
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-pluginloader.pl
 %{_datadir}/kconf_update/kopete-pluginloader.upd
-%{_datadir}/kconf_update/kopete-pluginloader2.sh
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-pluginloader2.sh
 %{_datadir}/kconf_update/kopete-pluginloader2.upd
-%{_datadir}/kconf_update/kopete-update_icq_server.pl
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-update_icq_server.pl
 %{_datadir}/kconf_update/kopete-update_icq_server.upd
-%{_datadir}/kconf_update/kopete-update_icq_ssl.pl
+%attr(755,root,root) %{_datadir}/kconf_update/kopete-update_icq_ssl.pl
 %{_datadir}/kconf_update/kopete-update_icq_ssl.upd
 %{_datadir}/knotifications5/kopete.notifyrc
 %{_datadir}/kopete
