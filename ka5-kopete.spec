@@ -1,14 +1,14 @@
-%define		kdeappsver	18.12.0
+%define		kdeappsver	18.12.1
 %define		qtver		5.9.0
 %define		kaname		kopete
 Summary:	kopete
 Name:		ka5-%{kaname}
-Version:	18.12.0
+Version:	18.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	cddbbb79fdaa2c5649f3e5f6ba39dde1
+# Source0-md5:	6efa25dc3df74ac41908254ce6b44541
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -21,7 +21,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gpgme-c++-devel >= 1.8.0
 BuildRequires:	ka5-kcontacts-devel
 BuildRequires:	ka5-kidentitymanagement-devel
-BuildRequires:	ka5-libkleo-devel >= 18.12.0
+BuildRequires:	ka5-libkleo-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= 5.51.0
 BuildRequires:	kf5-kcmutils-devel >= 5.53.0
 BuildRequires:	kf5-kconfig-devel >= 5.25.0
@@ -39,6 +39,7 @@ BuildRequires:	kf5-knotifyconfig-devel >= 5.53.0
 BuildRequires:	kf5-kparts-devel >= 5.53.0
 BuildRequires:	kf5-ktexteditor-devel >= 5.25.0
 BuildRequires:	kf5-kwallet-devel >= 5.25.0
+BuildRequires:	ninja
 BuildRequires:	phonon-qt5-devel
 BuildRequires:	qca-qt5-devel >= 2.1.0
 BuildRequires:	qt5-build >= %{qtver}
@@ -73,14 +74,14 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 install -d build
 cd build
 %cmake \
+	-G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
-%{__make}
+%ninja_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} -C build install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{kaname} --all-name --with-kde
 
