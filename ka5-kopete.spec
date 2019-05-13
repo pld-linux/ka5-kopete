@@ -1,14 +1,15 @@
-%define		kdeappsver	18.12.1
+%define		kdeappsver	19.04.1
+%define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kopete
 Summary:	kopete
 Name:		ka5-%{kaname}
-Version:	18.12.1
+Version:	19.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	6efa25dc3df74ac41908254ce6b44541
+# Source0-md5:	5ec77336dbae52ac8db046d8cadcdb7f
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -19,26 +20,26 @@ BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
 BuildRequires:	gpgme-c++-devel >= 1.8.0
-BuildRequires:	ka5-kcontacts-devel
-BuildRequires:	ka5-kidentitymanagement-devel
+BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
+BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkleo-devel >= %{kdeappsver}
-BuildRequires:	kf5-extra-cmake-modules >= 5.51.0
-BuildRequires:	kf5-kcmutils-devel >= 5.53.0
-BuildRequires:	kf5-kconfig-devel >= 5.25.0
-BuildRequires:	kf5-kcoreaddons-devel >= 5.25.0
-BuildRequires:	kf5-kcrash-devel >= 5.25.0
-BuildRequires:	kf5-kdbusaddons-devel >= 5.25.0
-BuildRequires:	kf5-kdelibs4support-devel >= 5.25.0
-BuildRequires:	kf5-kdnssd-devel >= 5.53.0
-BuildRequires:	kf5-kdoctools-devel >= 5.25.0
-BuildRequires:	kf5-kemoticons-devel >= 5.25.0
-BuildRequires:	kf5-khtml-devel >= 5.25.0
-BuildRequires:	kf5-ki18n-devel >= 5.25.0
-BuildRequires:	kf5-kio-devel >= 5.53.0
-BuildRequires:	kf5-knotifyconfig-devel >= 5.53.0
-BuildRequires:	kf5-kparts-devel >= 5.53.0
-BuildRequires:	kf5-ktexteditor-devel >= 5.25.0
-BuildRequires:	kf5-kwallet-devel >= 5.25.0
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcmutils-devel >= %{kframever}
+BuildRequires:	kf5-kconfig-devel >= %{kframever}
+BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf5-kcrash-devel >= %{kframever}
+BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
+BuildRequires:	kf5-kdelibs4support-devel >= %{kframever}
+BuildRequires:	kf5-kdnssd-devel >= %{kframever}
+BuildRequires:	kf5-kdoctools-devel >= %{kframever}
+BuildRequires:	kf5-kemoticons-devel >= %{kframever}
+BuildRequires:	kf5-khtml-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-knotifyconfig-devel >= %{kframever}
+BuildRequires:	kf5-kparts-devel >= %{kframever}
+BuildRequires:	kf5-ktexteditor-devel >= %{kframever}
+BuildRequires:	kf5-kwallet-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	phonon-qt5-devel
 BuildRequires:	qca-qt5-devel >= 2.1.0
@@ -75,6 +76,7 @@ install -d build
 cd build
 %cmake \
 	-G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
 %ninja_build
@@ -83,6 +85,7 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/sr
 %find_lang %{kaname} --all-name --with-kde
 
 %clean
