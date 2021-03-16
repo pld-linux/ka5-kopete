@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kopete
 Summary:	kopete
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	5ec77336dbae52ac8db046d8cadcdb7f
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	7bbe07decde1154cc7924ca566a97c4c
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -20,12 +20,12 @@ BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
 BuildRequires:	gpgme-c++-devel >= 1.8.0
-BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
 BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkleo-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	kf5-kcmutils-devel >= %{kframever}
 BuildRequires:	kf5-kconfig-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
 BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
 BuildRequires:	kf5-kcrash-devel >= %{kframever}
 BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
@@ -40,7 +40,9 @@ BuildRequires:	kf5-knotifyconfig-devel >= %{kframever}
 BuildRequires:	kf5-kparts-devel >= %{kframever}
 BuildRequires:	kf5-ktexteditor-devel >= %{kframever}
 BuildRequires:	kf5-kwallet-devel >= %{kframever}
+BuildRequires:	mediastreamer-devel
 BuildRequires:	ninja
+BuildRequires:	ortp-devel
 BuildRequires:	phonon-qt5-devel
 BuildRequires:	qca-qt5-devel >= 2.1.0
 BuildRequires:	qt5-build >= %{qtver}
@@ -96,7 +98,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/kopete.categories
 /etc/xdg/kopeterc
 %attr(755,root,root) %{_bindir}/kopete
 %attr(755,root,root) %{_bindir}/winpopup-install
@@ -307,6 +308,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/sounds/Kopete_Received.ogg
 %{_datadir}/sounds/Kopete_Sent.ogg
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
+%{_datadir}/qlogging-categories5/kopete.categories
+
+%ghost %{_libdir}/libkopete_otr_shared.so.1
+%{_libdir}/libkopete_otr_shared.so.1.*.*
+%{_libdir}/qt5/plugins/kcm_kopete_otr.so
+%{_libdir}/qt5/plugins/kopete_otr.so
+%{_datadir}/config.kcfg/kopete_otr.kcfg
+%{_iconsdir}/oxygen/22x22/status/object-locked-finished.png
+%{_iconsdir}/oxygen/22x22/status/object-locked-unverified.png
+%{_iconsdir}/oxygen/22x22/status/object-locked-verified.png
+%{_iconsdir}/oxygen/48x48/actions/mail-encrypt.png
+%{_datadir}/kservices5/kconfiguredialog/kopete_otr_config.desktop
+%{_datadir}/kservices5/kopete_otr.desktop
+%{_datadir}/kxmlgui5/kopete_otr/otrchatui.rc
+%{_datadir}/kxmlgui5/kopete_otr/otrui.rc
 
 %files devel
 %defattr(644,root,root,755)
@@ -321,3 +337,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so
 %attr(755,root,root) %{_libdir}/liboscar.so
+%{_libdir}/libkopete_otr_shared.so
