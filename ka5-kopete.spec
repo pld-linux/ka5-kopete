@@ -1,15 +1,15 @@
-%define		kdeappsver	20.12.3
+%define		kdeappsver	21.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kopete
 Summary:	kopete
 Name:		ka5-%{kaname}
-Version:	20.12.3
+Version:	21.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	7bbe07decde1154cc7924ca566a97c4c
+# Source0-md5:	5fb0637474036b69ca12b267dbad0c53
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -102,25 +102,25 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kopete
 %attr(755,root,root) %{_bindir}/winpopup-install
 %attr(755,root,root) %{_bindir}/winpopup-send
-%attr(755,root,root) %ghost %{_libdir}/libkopete.so.1
+%ghost %{_libdir}/libkopete.so.1
 %attr(755,root,root) %{_libdir}/libkopete.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete_oscar.so.1
+%ghost %{_libdir}/libkopete_oscar.so.1
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete_videodevice.so.1
+%ghost %{_libdir}/libkopete_videodevice.so.1
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopeteaddaccountwizard.so.1
+%ghost %{_libdir}/libkopeteaddaccountwizard.so.1
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopetechatwindow_shared.so.1
+%ghost %{_libdir}/libkopetechatwindow_shared.so.1
 %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopetecontactlist.so.1
+%ghost %{_libdir}/libkopetecontactlist.so.1
 %attr(755,root,root) %{_libdir}/libkopetecontactlist.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopeteidentity.so.1
+%ghost %{_libdir}/libkopeteidentity.so.1
 %attr(755,root,root) %{_libdir}/libkopeteidentity.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopeteprivacy.so.1
+%ghost %{_libdir}/libkopeteprivacy.so.1
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopetestatusmenu.so.1
+%ghost %{_libdir}/libkopetestatusmenu.so.1
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/liboscar.so.1
+%ghost %{_libdir}/liboscar.so.1
 %attr(755,root,root) %{_libdir}/liboscar.so.1.*.*
 %attr(755,root,root) %{_libdir}/libqgroupwise.so
 # TODO proper package for this dir
@@ -327,14 +327,14 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/kopete
-%attr(755,root,root) %{_libdir}/libkopete.so
-%attr(755,root,root) %{_libdir}/libkopete_oscar.so
-%attr(755,root,root) %{_libdir}/libkopete_videodevice.so
-%attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so
-%attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so
-%attr(755,root,root) %{_libdir}/libkopetecontactlist.so
-%attr(755,root,root) %{_libdir}/libkopeteidentity.so
-%attr(755,root,root) %{_libdir}/libkopeteprivacy.so
-%attr(755,root,root) %{_libdir}/libkopetestatusmenu.so
-%attr(755,root,root) %{_libdir}/liboscar.so
+%{_libdir}/libkopete.so
+%{_libdir}/libkopete_oscar.so
+%{_libdir}/libkopete_videodevice.so
+%{_libdir}/libkopeteaddaccountwizard.so
+%{_libdir}/libkopetechatwindow_shared.so
+%{_libdir}/libkopetecontactlist.so
+%{_libdir}/libkopeteidentity.so
+%{_libdir}/libkopeteprivacy.so
+%{_libdir}/libkopetestatusmenu.so
+%{_libdir}/liboscar.so
 %{_libdir}/libkopete_otr_shared.so
