@@ -43,6 +43,7 @@ BuildRequires:	kf5-knotifyconfig-devel >= %{kframever}
 BuildRequires:	kf5-kparts-devel >= %{kframever}
 BuildRequires:	kf5-ktexteditor-devel >= %{kframever}
 BuildRequires:	kf5-kwallet-devel >= %{kframever}
+BuildRequires:	libgadu-devel
 BuildRequires:	mediastreamer-devel
 BuildRequires:	ninja
 BuildRequires:	ortp-devel
@@ -158,6 +159,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_chatwindow.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_contactnotes.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_emailwindow.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kopete_gadu.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_groupwise.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_highlight.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_history.so
@@ -292,6 +294,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/kopete_chatwindowconfig.desktop
 %{_datadir}/kservices5/kopete_contactnotes.desktop
 %{_datadir}/kservices5/kopete_groupwise.desktop
+%{_datadir}/kservices5/kopete_gadu.desktop
 %{_datadir}/kservices5/kopete_highlight.desktop
 %{_datadir}/kservices5/kopete_history.desktop
 %{_datadir}/kservices5/kopete_icq.desktop
