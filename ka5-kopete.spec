@@ -8,7 +8,7 @@
 Summary:	kopete
 Name:		ka5-%{kaname}
 Version:	22.04.1
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -333,6 +333,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/oxygen/48x48/actions/mail-encrypt.png
 %{_datadir}/kservices5/kconfiguredialog/kopete_otr_config.desktop
 %{_datadir}/kservices5/kopete_otr.desktop
+%dir %{_datadir}/kxmlgui5/kopete_otr
 %{_datadir}/kxmlgui5/kopete_otr/otrchatui.rc
 %{_datadir}/kxmlgui5/kopete_otr/otrui.rc
 
