@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.0
+%define		kdeappsver	23.08.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kopete
 Summary:	kopete
 Name:		ka5-%{kaname}
-Version:	23.08.0
+Version:	23.08.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	39039bf85acc87be265e19daabc5778c
+# Source0-md5:	bdbaa8f44a5e94c8d6a74a9ce6223f1d
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= 5.11.1
@@ -54,6 +54,7 @@ BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	%{name}-data = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -61,6 +62,18 @@ Kopete is an instant messenger supporting AIM, ICQ, Windows Live
 Messenger, Yahoo, Jabber, Gadu-Gadu, Novell GroupWise Messenger, and
 more. It is designed to be a flexible and extensible multi-protocol
 system suitable for personal and enterprise use.
+
+%package data
+Summary:	Data files for %{kaname}
+Summary(pl.UTF-8):	Dane dla %{kaname}
+Group:		X11/Applications
+BuildArch:	noarch
+
+%description data
+Data files for %{kaname}.
+
+%description data -l pl.UTF-8
+Dane dla %{kaname}.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -104,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{kaname}.lang
+%files
 %defattr(644,root,root,755)
 /etc/xdg/kopeterc
 %attr(755,root,root) %{_bindir}/kopete
@@ -171,6 +184,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_urlpicpreview.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_webpresence.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kopete_wp.so
+%ghost %{_libdir}/libkopete_otr_shared.so.1
+%attr(755,root,root) %{_libdir}/libkopete_otr_shared.so.1.*.*
+%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_kopete_otr.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kopete_otr.so
+
+%files data -f %{kaname}.lang
+%defattr(644,root,root,755)
 %{_desktopdir}/org.kde.kopete.desktop
 %{_datadir}/config.kcfg/historyconfig.kcfg
 %{_datadir}/config.kcfg/kopeteappearancesettings.kcfg
@@ -319,11 +339,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/sounds/Kopete_Sent.ogg
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_datadir}/qlogging-categories5/kopete.categories
-
-%ghost %{_libdir}/libkopete_otr_shared.so.1
-%{_libdir}/libkopete_otr_shared.so.1.*.*
-%{_libdir}/qt5/plugins/kcm_kopete_otr.so
-%{_libdir}/qt5/plugins/kopete_otr.so
 %{_datadir}/config.kcfg/kopete_otr.kcfg
 %{_iconsdir}/oxygen/22x22/status/object-locked-finished.png
 %{_iconsdir}/oxygen/22x22/status/object-locked-unverified.png
