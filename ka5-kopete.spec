@@ -22,7 +22,7 @@ BuildRequires:	Qt5Widgets-devel
 BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
-BuildRequires:	gpgme-c++-devel >= 1.8.0
+BuildRequires:	gpgmepp-devel >= 1.8.0
 BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkleo-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
