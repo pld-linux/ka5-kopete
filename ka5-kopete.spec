@@ -8,7 +8,7 @@
 Summary:	kopete
 Name:		ka5-%{kaname}
 Version:	23.08.4
-Release:	4
+Release:	5
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -99,7 +99,9 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+	-DWITH_meanwhile=OFF
+
 %ninja_build -C build
 
 %if %{with tests}
